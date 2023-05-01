@@ -52,6 +52,10 @@ try {
 
 	if (rs.next()){
 		session.setAttribute("name",rs.getString("uname"));
+		session.setAttribute("email",rs.getString("uemail"));
+		session.setAttribute("mobile",rs.getString("umobile"));
+		session.setAttribute("role",rs.getString("role"));
+		session.setAttribute("createdAt",rs.getString("createdAt"));
 		dispatcher=request.getRequestDispatcher("index.jsp");
 
 	}else {

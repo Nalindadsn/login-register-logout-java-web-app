@@ -26,6 +26,83 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/index-styles.css" rel="stylesheet" />
+<style>
+
+.main{
+z-index:1000;
+  width: 100%;
+  padding:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(https://tinypic.host/images/2023/03/20/Shapes-Abstraction-Background-2466799.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.profile-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 25px;
+  padding: 30px;
+  border: 1px solid #ffffff40;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+}
+.image .profile-pic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+.data h2{
+  font-size: 33px;
+  font-weight: 600;
+}
+span{
+  font-size: 18px;
+}
+.row{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.row .info{
+  text-align: center;
+  padding: 0 20px;
+}
+.buttons{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.buttons .btn{
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  padding: 8px 25px;
+  border-radius: 25px;
+  font-size: 18px;
+  white-space: nowrap;
+  background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
+}
+.buttons .btn:hover{
+  box-shadow: inset 0 5px 20px rgba(0,0,0,0.4);
+}
+</style>
 </head>
 <body id="page-top">
 	<!-- Navigation-->
@@ -44,6 +121,9 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item mx-0 mx-lg-1"><a
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="index.jsp">Home</a></li>
+				
+					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="profile.jsp">Profile</a></li>
 				<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="logout">Logout</a></li>
@@ -55,32 +135,31 @@
 		</div>
 	</nav>
 	<!-- Masthead-->
-	<header class="masthead text-white text-center" style="   width: 100%;
-    
-    background-image:url(images/reduce-file-size-800x400.jpg);
-    background-size: cover;
-    margin: 0;
-    padding: 0;">
-		<div class="container d-flex align-items-center flex-column">
-			<!-- Masthead Avatar Image-->
-			<br><br><br><br>
-			<img class="masthead-avatar mb-5" src="assets/img/avataaars.svg"
-				alt="..." />
-			<!-- Masthead Heading-->
-			<h4  style="text-shadow:3px 3px 3px #000">Hello 
-<span class="badge badge-success bg-success" > <%= session.getAttribute("name") %></span></h4>
-			<h1 class="masthead-heading text-uppercase mb-0 shadow" style="text-shadow:3px 3px 3px #000">E- Government Document Management System</h1>
-			<!-- Icon Divider-->
-			<div class="divider-custom divider-light">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
-			</div>
+	 <section class="main" style="margin-top:100px">
+  <div class="profile-card">
+    <div class="image">
+      <img src="https://tinypic.host/images/2022/12/19/img_avatar.png" alt="" class="profile-pic">
+    </div>
+    <div class="data">
+      <h2><%= session.getAttribute("name") %></h2>
+      <span>Role : <%= session.getAttribute("createdAt") %></span>
+      <span>Role : <%= session.getAttribute("role") %></span>
+    </div>
+    <div class="row">
+      <div class="info">
+        <h3>Contact Number</h3>
+        <span><%= session.getAttribute("email") %></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="info">
+        <h3>Contact Number</h3>
+        <span><%= session.getAttribute("mobile") %></span>
+      </div>
+    </div>
+  </div>
+</section>
 
-		</div>
-	</header>
 
 
 	
@@ -92,7 +171,7 @@
 				<div class="col-lg-4 mb-5 mb-lg-0">
 					<h4 class="text-uppercase mb-4">Location</h4>
 					<p class="lead mb-0">
-						2215  <br /> Address
+						2215<br /> Address
 					</p>
 				</div>
 				<!-- Footer Social Icons-->
@@ -111,8 +190,8 @@
 				<div class="col-lg-4">
 					<h4 class="text-uppercase mb-4">About Us</h4>
 					<p class="lead mb-0">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia eaque tempora ad, laborum animi eius quisquam officiis ea voluptatibus ducimus omnis, dignissimos facilis suscipit numquam? Iste voluptas distinctio totam nisi!
-.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia eaque tempora ad, laborum animi eius quisquam officiis ea voluptatibus ducimus omnis, dignissimos facilis suscipit numquam? Iste voluptas distinctio totam nisi!
+
 					</p>
 				</div>
 			</div>
@@ -124,9 +203,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia eaque tempora a
 			<small>Copyright &copy; Your Website 2021</small>
 		</div>
 	</div>
-	<!-- Portfolio Modals-->
 
-	
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
