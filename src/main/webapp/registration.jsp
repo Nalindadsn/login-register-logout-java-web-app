@@ -38,7 +38,7 @@ $().ready(function() {
 			re_pass: {
 				required: true,
 				minlength: 5,
-				equalTo: "#password"
+				equalTo: "#pass"
 			},
 			email: {
 				required: true,
@@ -46,7 +46,9 @@ $().ready(function() {
 			},
 			contact: {
 				required: true,
-				rangelength:[2,10]
+				minlength: 10,
+				maxlength: 10,
+				number: true
 			}
 		},
 		messages: {
@@ -66,13 +68,19 @@ $().ready(function() {
 			email: "Please enter a valid email address",
 			contact: {
 				required: "Please enter a phone number",
-				rangelength:"please enter valid phone"
+				minlength:"please enter valid phone number",
+				maxlength:"please enter valid phone number",
+				number:"please enter valid phone number"
 			},
 		}
 	});
 
 	
 });</script>
+<style type="text/css">
+.error{
+color:red
+}</style>
 
 </head>
 <body>
@@ -150,7 +158,6 @@ if(status=="success"){
 if(status=="already"){
 	swal("Sorry","Email already exist","error");
 }
-alert("test")
 
 </script>
 

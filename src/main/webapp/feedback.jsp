@@ -14,6 +14,46 @@
 
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
+	<script src="./lib/jquery.js"></script>
+	<script src="./dist/jquery.validate.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+	// validate the comment form when it is submitted
+	$("#commentForm").validate();
+
+	// validate signup form on keyup and submit
+	$("#register-form").validate({
+		rules: {
+			
+			email: {
+				required: true,
+				email: true
+			},
+			contact: {
+				required: true,
+				minlength: 10,
+				maxlength: 10,
+				number: true
+			}
+		},
+		messages: {
+			
+			email: "Please enter a valid email address",
+			contact: {
+				required: "Please enter a phone number",
+				minlength:"please enter valid phone number",
+				maxlength:"please enter valid phone number",
+				number:"please enter valid phone number"
+			},
+		}
+	});
+
+	
+});</script>
+<style type="text/css">
+.error{
+color:red
+}</style>
 </head>
 <body>
 <input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
