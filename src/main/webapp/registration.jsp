@@ -15,6 +15,64 @@
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
 
+	<script src="vendor/jquery/jquery.min.js"></script>
+	
+	<script src="./lib/jquery.js"></script>
+	<script src="./dist/jquery.validate.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+	// validate the comment form when it is submitted
+	$("#commentForm").validate();
+
+	// validate signup form on keyup and submit
+	$("#register-form").validate({
+		rules: {
+			name: {
+				required: true,
+				minlength: 2
+			},
+			pass: {
+				required: true,
+				minlength: 5
+			},
+			re_pass: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			contact: {
+				required: true,
+				rangelength:[2,10]
+			}
+		},
+		messages: {
+			name: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			pass: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			re_pass: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			email: "Please enter a valid email address",
+			contact: {
+				required: "Please enter a phone number",
+				rangelength:"please enter valid phone"
+			},
+		}
+	});
+
+	
+});</script>
 
 </head>
 <body>
@@ -82,7 +140,6 @@
 
 	</div>
 	<!-- JS -->
-	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="js/main.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
