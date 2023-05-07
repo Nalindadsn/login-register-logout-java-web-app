@@ -13,61 +13,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Feedback
+ * Servlet implementation class Update
  */
-@WebServlet("/feedback")
-public class Feedback extends HttpServlet {
+@WebServlet("/update")
+public class Update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-
-
-		 
-RequestDispatcher dispatcher=null;
-Connection con=null;
-try {
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube","root","");
-	PreparedStatement pst=con.prepareStatement("select * from feedback");
-		
-	ResultSet rs=pst.executeQuery();
-
-
-
-	if (rs.next()){
-		dispatcher=request.getRequestDispatcher("index.jsp");
-
-	}else {
-
-		request.setAttribute("status", "failed");
-		dispatcher=request.getRequestDispatcher("login.jsp");
-	}
-	dispatcher.forward(request, response);
-}catch(Exception e) {
-	e.printStackTrace();
-	
-	
-}
-		
-		
-	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// TODO Auto-generated method stub
 		 String uname=request.getParameter("name");
 		 String uemail=request.getParameter("email");
+		 String upwd=request.getParameter("pass");
 		 String umobile=request.getParameter("contact");
-		 String message=request.getParameter("message");
 RequestDispatcher dispatcher=null;
 Connection con=null;
 try {
@@ -75,13 +37,13 @@ try {
 	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube","root","");
 	
 
-	 PreparedStatement pst=con.prepareStatement("insert into feedback(uname,uemail,umobile,message) values(?,?,?,?)");
+
+	 PreparedStatement pst=con.prepareStatement("insert into users(uname,upwd,umobile) values(?,?,?)");
 	pst.setString(1, uname);
-	pst.setString(2, uemail);
-	pst.setString(3, umobile);
-	pst.setString(4, message);
+	pst.setString(2, upwd);
+	pst.setString(4, umobile);
 	int rowCount=pst.executeUpdate();
-	dispatcher=request.getRequestDispatcher("feedback.jsp");
+	dispatcher=request.getRequestDispatcher("registration.jsp");
 	if (rowCount>0){
 		request.setAttribute("status", "success");
 	}else {
@@ -89,7 +51,6 @@ try {
 		request.setAttribute("status", "failed");
 	}
 
-		
 	 
 	 
 	dispatcher.forward(request, response);

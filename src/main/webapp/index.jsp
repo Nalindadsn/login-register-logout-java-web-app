@@ -32,7 +32,7 @@
 	<nav
 		class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
 		id="mainNav">
-		<div class="container">
+		<div class="container">index.jsp
 			<a class="navbar-brand" href="#page-top">DOC</a>
 			<button
 				class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
