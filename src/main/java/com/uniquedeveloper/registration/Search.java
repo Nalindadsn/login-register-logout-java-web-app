@@ -24,8 +24,8 @@ public class Search extends HttpServlet {
 	            PreparedStatement ps =
 	         con.prepareStatement ("select * from feedback where uemail=?");
 	            ps.setString (1, empid);
-	            out.print ("<table width=50% border=1>");
-	            out.print ("<caption>Employee Details:</caption>");
+	            out.print ("<html><head><link href='css/index-styles.css' rel='stylesheet' /></head><body><table class='table' width=100% border=1>");
+	            out.print ("<caption>Feedback Details:" +empid+"</caption>");
 	            ResultSet rs = ps.executeQuery ();
 	            /* Printing column names */
 	            out.print ("</br></br>");
@@ -42,7 +42,7 @@ public class Search extends HttpServlet {
 	         {
 	             out.print ("<tr><td>" + rs.getString (1) + "</td><td>" +  rs.getString (2) + " </td><td>" + rs.getString (3) + "</td><td>" + rs.getString (4) + "</td><td>" + rs.getString (5) + "</td><td>" + rs.getString (6) + "</td></tr>");
 	         }
-	            out.print ("</table>");
+	            out.print ("</table></body></html>");
 	        }
 	        catch (Exception e2)
 	        {
