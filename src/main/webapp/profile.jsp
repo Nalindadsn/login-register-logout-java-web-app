@@ -137,6 +137,7 @@ span{
 	<!-- Masthead-->
 	 <section class="main" style="margin-top:100px">
   <div class="profile-card">
+  <a style="float:right" href="update.jsp">Edit</a>
     <div class="image">
       <img src="https://tinypic.host/images/2022/12/19/img_avatar.png" alt="" class="profile-pic">
     </div>

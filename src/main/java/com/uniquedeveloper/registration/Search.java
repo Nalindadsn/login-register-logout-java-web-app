@@ -16,16 +16,43 @@ public class Search extends HttpServlet {
 	    {
 	        response.setContentType ("text/html");
 	        PrintWriter out = response.getWriter ();
-	        String empid = request.getParameter ("empid");
+	        String femail = request.getParameter ("femail");
 	        try
 	        {
 	            Class.forName ("com.mysql.jdbc.Driver");
 	            Connection con = DriverManager.getConnection ("jdbc:mysql://localhost:3306/youtube", "root", "");
 	            PreparedStatement ps =
 	         con.prepareStatement ("select * from feedback where uemail=?");
-	            ps.setString (1, empid);
-	            out.print ("<html><head><link href='css/index-styles.css' rel='stylesheet' /></head><body><table class='table' width=100% border=1>");
-	            out.print ("<caption>Feedback Details:" +empid+"</caption>");
+	            ps.setString (1, femail);
+	            out.print ("<html><head><link href='css/index-styles.css' rel='stylesheet' /></head><body>"
+	            		+ ""
+	            		+ "<nav\r\n"
+	            		+ "		class='navbar navbar-expand-lg bg-secondary text-uppercase fixed-top'\r\n"
+	            		+ "		id='mainNav'>\r\n"
+	            		+ "		<div class='container'>index.jsp\r\n"
+	            		+ "			<a class='navbar-brand' href='#page-top'>DOC</a>\r\n"
+	            		+ "			<button\r\n"
+	            		+ "				class='navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded'\r\n"
+	            		+ "				type='button' data-bs-toggle='collapse'\r\n"
+	            		+ "				data-bs-target='#navbarResponsive' aria-controls='navbarResponsive'\r\n"
+	            		+ "				aria-expanded='false' aria-label='Toggle navigation'>\r\n"
+	            		+ "				Menu <i class='fas fa-bars'></i>\r\n"
+	            		+ "			</button>\r\n"
+	            		+ "			<div class='collapse navbar-collapse' id='navbarResponsive'>\r\n"
+	            		+ "				<ul class='navbar-nav ms-auto'>\r\n"
+	            		+ "					<li class='nav-item mx-0 mx-lg-1'><a\r\n"
+	            		+ "						class='nav-link py-3 px-0 px-lg-3 rounded' href='feedback.jsp'>Add New Feedback</a></li>\r\n"
+	            		+ "				\r\n"
+	            		+ "					\r\n"
+	            		+ "					\r\n"
+	            		+ "				</ul>\r\n"
+	            		+ "			</div>\r\n"
+	            		+ "		</div>\r\n"
+	            		+ "	</nav>"
+	            		+ ""
+	            		+ ""
+	            		+ "<table class='table mt-10' style='margin-top:100px' width=100% border=1>");
+	            out.print ("<caption>Feedback Details:" +femail+"</caption>");
 	            ResultSet rs = ps.executeQuery ();
 	            /* Printing column names */
 	            out.print ("</br></br>");

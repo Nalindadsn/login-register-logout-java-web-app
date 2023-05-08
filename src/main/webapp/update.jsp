@@ -37,13 +37,7 @@ $().ready(function() {
 				required: true,
 				minlength: 2
 			},
-			pass: {
-				required: true,
-				minlength: 5
-			},
 			re_pass: {
-				required: true,
-				minlength: 5,
 				equalTo: "#pass"
 			},
 			email: {
@@ -100,7 +94,7 @@ color:red
 			<div class="container">
 				<div class="signup-content">
 					<div class="signup-form">
-						<h2 class="form-title">Sign up</h2>
+						<h2 class="form-title">Update Profile</h2>
 					
 						<form method="post" action="update" class="register-form"
 							id="register-form">
@@ -111,7 +105,7 @@ color:red
 							</div>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-									type="email" name="email" id="email" placeholder="Your Email" value=<%= session.getAttribute("email") %> />
+									type="email" name="email" id="email" placeholder="Your Email" value=<%= session.getAttribute("email") %> readonly />
 							</div>
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
@@ -141,8 +135,9 @@ color:red
 						</form>
 					</div>
 					<div class="signup-image">
-						<figure>
+						<figure><a href="index.jsp">Back to Home</a>
 							<img src="images/sign-up-concept-illustration_114360-7875.avif" alt="sing up image">
+						
 						</figure>
 						
 					</div>
@@ -158,11 +153,9 @@ color:red
 <script type="text/javascript">
 var status=document.getElementById("status").value;
 if(status=="success"){
-	swal("Congrates","Your account cretated succesfully","success");
+	swal("Success","Your account updated succesfully","success");
 }
-if(status=="already"){
-	swal("Sorry","Email already exist","error");
-}
+
 
 </script>
 

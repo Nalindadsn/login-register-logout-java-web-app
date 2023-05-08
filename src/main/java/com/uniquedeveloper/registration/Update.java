@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Update
@@ -25,6 +26,8 @@ public class Update extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		 HttpSession session=request.getSession();
 		// TODO Auto-generated method stub
 		 String uname=request.getParameter("name");
 		 String uemail=request.getParameter("email");
@@ -37,19 +40,46 @@ try {
 	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube","root","");
 	
 
+	 if(upwd=="") {
+		 PreparedStatement pst=con.prepareStatement("UPDATE users SET uname =?,  umobile = ? WHERE uemail = ?");
+			pst.setString(1, uname);
+			pst.setString(2, umobile);
+			pst.setString(3, uemail);
+			int rowCount=pst.executeUpdate();
 
-	 PreparedStatement pst=con.prepareStatement("insert into users(uname,upwd,umobile) values(?,?,?)");
-	pst.setString(1, uname);
-	pst.setString(2, upwd);
-	pst.setString(4, umobile);
-	int rowCount=pst.executeUpdate();
-	dispatcher=request.getRequestDispatcher("registration.jsp");
-	if (rowCount>0){
-		request.setAttribute("status", "success");
-	}else {
+			dispatcher=request.getRequestDispatcher("update.jsp");
+			if (rowCount>0){
+				request.setAttribute("status", "success");
 
-		request.setAttribute("status", "failed");
-	}
+				session.setAttribute("name",uname);
+				session.setAttribute("mobile",umobile);
+			}else {
+
+				request.setAttribute("status", "failed");
+			}
+			dispatcher=request.getRequestDispatcher("update.jsp");
+	 }else {
+		 PreparedStatement pst=con.prepareStatement("UPDATE users SET uname =?, upwd = ?, umobile = ? WHERE uemail = ?");
+			pst.setString(1, uname);
+			pst.setString(2, upwd);
+			pst.setString(3, umobile);
+			pst.setString(4, uemail);
+			int rowCount=pst.executeUpdate();
+			
+
+			dispatcher=request.getRequestDispatcher("update.jsp");
+			if (rowCount>0){
+				request.setAttribute("status", "success");
+				session.setAttribute("name",uname);
+				session.setAttribute("mobile",umobile);
+			}else {
+
+				request.setAttribute("status", "failed");
+			}
+
+			dispatcher=request.getRequestDispatcher("update.jsp");
+	 }
+
 
 	 
 	 

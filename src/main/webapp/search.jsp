@@ -32,7 +32,7 @@
 	<nav
 		class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
 		id="mainNav">
-		<div class="container">index.jsp
+		<div class="container">
 			<a class="navbar-brand" href="#page-top">DOC</a>
 			<button
 				class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
@@ -43,6 +43,8 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
+					<li class="nav-item mx-0 mx-lg-1"><a
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="feedback.jsp">Add new feedback</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="profile.jsp">Profile</a></li>
 				<li class="nav-item mx-0 mx-lg-1"><a
@@ -58,8 +60,10 @@
 	
 <section class="m-5">
 <br><br><br><br><br><br>
+<h2 class="form-title">Search Feedback
+</h2>
  <form action="search" > Enter Email:
-  <input type="text" name="empid" required/>
+  <input type="text" name="femail" required/>
   <br />
   <input type="submit" value="search" /> </form>
 
