@@ -20,7 +20,7 @@ public class Search extends HttpServlet {
 	        try
 	        {
 	            Class.forName ("com.mysql.jdbc.Driver");
-	            Connection con = DriverManager.getConnection ("jdbc:mysql://localhost:3306/youtube", "root", "");
+	            Connection con = DriverManager.getConnection ("jdbc:mysql://localhost:3306/dms", "root", "");
 	            PreparedStatement ps =
 	         con.prepareStatement ("select * from feedback where uemail=?");
 	            ps.setString (1, femail);

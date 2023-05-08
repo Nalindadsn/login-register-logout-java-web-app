@@ -36,7 +36,7 @@ RequestDispatcher dispatcher=null;
 Connection con=null;
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
-	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube","root","");
+	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/dms","root","");
 	PreparedStatement pst=con.prepareStatement("select * from feedback");
 		
 	ResultSet rs=pst.executeQuery();
@@ -72,7 +72,7 @@ RequestDispatcher dispatcher=null;
 Connection con=null;
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
-	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube","root","");
+	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/dms","root","");
 	
 
 	 PreparedStatement pst=con.prepareStatement("insert into feedback(uname,uemail,umobile,message) values(?,?,?,?)");

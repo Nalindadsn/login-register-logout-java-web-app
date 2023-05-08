@@ -33,7 +33,7 @@ RequestDispatcher dispatcher=null;
 Connection con=null;
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
-	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube","root","");
+	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/dms","root","");
 	
 		PreparedStatement pst2=con.prepareStatement("select * from users where uemail=?");
 		pst2.setString(1, uemail);			
