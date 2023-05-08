@@ -108,6 +108,8 @@ color:red
 					</div>
 					<div class="signup-image">
 						<figure>
+						<a href="index.jsp">Back to Home</a> | 
+						<a href="search.jsp">Search Feedback</a>
 							<img src="images/pngwing.com (1).png" alt="sing up image">
 						</figure>
 					</div>
